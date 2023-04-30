@@ -12,7 +12,13 @@ import Address from "./address.svg";
 import City from "./city.svg";
 import Pin from "./pin.svg";
 import State from "./state.svg";
-import Country from "./country.svg"
+import Country from "./country.svg";
+import Price from "./price.svg";
+import Description from "./description.svg";
+import Title from "./title.svg";
+
+
+
 
 
 
@@ -31,5 +37,8 @@ export {
     State,
     Pin,
     City,
-    Country
+    Country,
+    Price,
+    Description,
+    Title
 }

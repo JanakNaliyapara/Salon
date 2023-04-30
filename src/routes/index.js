@@ -8,6 +8,8 @@ import Signup from "../Screens/signup/signup";
 import Splash from "../Screens/splash/splash";
 import uploadImage from "../Screens/uploadImage/uploadImage";
 import OnboardingScreen from "../Screens/welcome/onboardingScreen";
+import serviceCreate from "../Screens/salonService/serviceCreate/serviceCreate";
+import ServiceImageUpload from "../Screens/salonService/serviceImageUpload/serviceImageUpload";
 
 export const navigationRef = createNavigationContainerRef()
 
@@ -38,6 +40,9 @@ export default function Routes() {
                     <stack.Screen name="SalonOwner" component={SalonOwner} />
                     <stack.Screen name="UploadImage" component={uploadImage} />
                     <stack.Screen name="SalonTime" component={salonTime} />
+                    <stack.Screen name="ServiceCreate" component={serviceCreate} />
+                    <stack.Screen name="ServiceImageUpload" component={ServiceImageUpload} />
+
                 </stack.Navigator>
             </NavigationContainer>
 

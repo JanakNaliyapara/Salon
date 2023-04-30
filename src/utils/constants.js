@@ -1,5 +1,5 @@
 export const constants = {
-    Login:'Login',
+    Login: 'Login',
     Login_Account: 'Login to your Account',
     Email: 'Email',
     Password: 'Password',
@@ -19,9 +19,15 @@ export const constants = {
     fillProfile: 'Fill Your Profile',
     salonTimeSloat: 'Salon Time Slot',
     DayTime: 'Day Start Time',
-    EndTime:'Day End Time',
-    Lunch:'Pick your lunch time',
-    Interval:'Interval',
-    Max_Appointments:'Max Appointments'
+    EndTime: 'Day End Time',
+    Lunch: 'Pick your lunch time',
+    Interval: 'Interval',
+    Max_Appointments: 'Max Appointments',
+    ServiceCreate: 'Create Service',
+    title: 'Title',
+    short_description: 'Short Description',
+    long_description: 'Long Description',
+    price: 'Price',
+    service_ImageUpload: 'Service Image'
 
 }
