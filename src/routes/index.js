@@ -32,7 +32,6 @@ export default function Routes() {
 
             <NavigationContainer ref={navigationRef}>
                 <stack.Navigator screenOptions={{ headerShown: false }}>
-                    <stack.Screen name="ServiceCreate" component={serviceCreate} />
                     <stack.Screen name="Splash" component={Splash} />
                     <stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
                     <stack.Screen name="Signin" component={Signin} />
@@ -42,6 +41,8 @@ export default function Routes() {
                     <stack.Screen name="UploadImage" component={uploadImage} />
                     <stack.Screen name="SalonTime" component={salonTime} />
                     <stack.Screen name="ServiceImageUpload" component={ServiceImageUpload} />
+                    <stack.Screen name="ServiceCreate" component={serviceCreate} />
+
 
                 </stack.Navigator>
             </NavigationContainer>

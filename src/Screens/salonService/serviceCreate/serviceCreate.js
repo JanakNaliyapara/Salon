@@ -4,7 +4,7 @@ import Button from "../../../Components/Buttons";
 import Input from "../../../Components/Input";
 import colors from "../../../utils/colors";
 import { constants } from "../../../utils/constants";
-import fonts from "../../../utils/fonts";
+// import fonts from "../../../utils/fonts";
 import Header from "../../../Components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -20,7 +20,7 @@ const serviceCreate = ({ navigation }) => {
         title: '',
         short_description: '',
         long_description: '',
-        price: 0,
+        price: 0.00,
     });
 
     const [errors, setErrors] = useState(true);
@@ -64,17 +64,27 @@ const serviceCreate = ({ navigation }) => {
         }
         if (isValid) {
             const formData = {
-                ...value
+                title: value.title,
+                short_description: value.short_description,
+                long_description: value.long_description,
+                price: value.price
             }
-            console.log("Is Valid on Data :::", isValid);
+
+            console.log("Is Valid on Data :::", isValid, typeof formData.price,);
             console.log("Form Data on :::", formData);
+            // return;
             dispatch(salonsService(formData))
         }
     }
 
     const handleOnChange = (text, input) => {
         console.log("text : ", text, input);
-        setValue(prevState => ({ ...prevState, [input]: text }));
+        if (input === "price") {
+            setValue(prevState => ({ ...prevState, [input]: parseInt(text).toFixed(2) }));
+        }
+        else {
+            setValue(prevState => ({ ...prevState, [input]: text }));
+        }
     };
     const handleError = (error, input) => {
         setErrors(prevState => ({ ...prevState, [input]: error }));
@@ -135,7 +145,7 @@ const serviceCreate = ({ navigation }) => {
                             label={constants?.price}
                             placeholder={constants?.price}
                             leftIcon={"Price"}
-                            keyboardType={"number-pad"}
+                            keyboardType={"numeric"}
                             onFocus={() => handleError(null, 'price')}
                             onChangeText={(text) => handleOnChange(text, 'price')}
                             error={errors.price}
