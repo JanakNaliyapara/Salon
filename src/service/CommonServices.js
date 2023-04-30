@@ -116,7 +116,7 @@ export const salonsTime = async (data) => {
         await axios.post(`${BASE_URL + apiEndPoints.salonsTimings}`, data, { headers: headers }).then(e => {
             if (e.status == 201) {
                 showSucess(e.data.message);
-                navigate("Signin");
+                navigate("ServiceCreate");
             }
         }).catch(err => console.log("err", err))
         // console.log("DTI :: ", dataItem);
@@ -126,4 +126,26 @@ export const salonsTime = async (data) => {
         console.log("errror", e);
         return e;
     }
+}
+
+
+// post api salons Service Create
+
+export const serviceCreate = async (data) => {
+    let token = await AsyncStorage.getItem('token');
+    console.log("Data : Token :: ", data, token);
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': token
+    }
+
+    try {
+        return await axios.post(`${BASE_URL + apiEndPoints.salonsServices}`, data, { headers: headers })
+    } catch (e) {
+        console.log("error on create", e);
+        return e;
+
+    }
+
 }

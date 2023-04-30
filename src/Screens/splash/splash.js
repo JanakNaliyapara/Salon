@@ -10,7 +10,7 @@ const Splash = ({ navigation }) => {
 
     useEffect(() => {
         setTimeout(() => {
-            navigation.navigate('ServiceCreate');
+            navigation.navigate('OnboardingScreen');
         }, 3000);
     }, []);
 

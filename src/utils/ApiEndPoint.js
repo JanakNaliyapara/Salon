@@ -5,4 +5,5 @@ export const apiEndPoints = {
     salons: 'salons',
     salonsTimings: 'salons/timings',
     logoUpload: 'salons/logo',
+    salonsServices: 'salons/services'
 }

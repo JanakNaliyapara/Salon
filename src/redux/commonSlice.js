@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { navigate } from "../routes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { showError, showSucess } from "../utils/helperFunction";
+import { serviceCreate } from "../service/CommonServices";
 
 
 export const register = createAsyncThunk(
@@ -104,7 +105,7 @@ export const salonTimedata = createAsyncThunk(
         console.log("Respnse on salon details", response, salonDetails);
         if (res?.status === 201) {
             showSucess(response?.data?.message);
-            navigate("Signin")
+            navigate("ServiceCreate")
             return fulfillWithValue(res?.data?.data)
         } else {
             showError(response?.response?.data?.message)
@@ -112,5 +113,24 @@ export const salonTimedata = createAsyncThunk(
         }
         return rejectWithValue(res?.res?.data?.Error);
 
+    }
+)
+
+// Create Salons Service   
+export const salonsService = createAsyncThunk(
+    'auth/salons/services',
+    async (servicesDetails, { fulfillWithValue, rejectWithValue }) => {
+        console.log("Salon :: ", servicesDetails);
+        const response = await serviceCreate(servicesDetails)
+        if (response?.status === 200) {
+            // navigate("UploadImage");
+            showSucess(response?.data?.message)
+            // await AsyncStorage.setItem("token", response?.data?.data?.access_token)
+            return fulfillWithValue(response?.data?.data)
+        } else {
+            showError(response?.response?.data?.message)
+            console.log("Error salons services Details :: ", response);
+        }
+        return rejectWithValue(response?.response?.data?.error);
     }
 )

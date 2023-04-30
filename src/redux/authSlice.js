@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { generateOtp, otp, register, salonOwner, verifyOtpData, } from "./commonSlice";
+import { generateOtp, otp, register, salonOwner, salonsService, verifyOtpData, } from "./commonSlice";
 
 
 const initialState = {
@@ -7,7 +7,8 @@ const initialState = {
     isLoading: false,
     errorData: null,
     token: null,
-    salonDetails: null
+    salonDetails: null,
+    salonsServices: null
 }
 
 
@@ -21,6 +22,7 @@ export const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            // Register on 
             .addCase(register.pending, (state) => {
                 state.userdata = null;
             })
@@ -36,6 +38,7 @@ export const authSlice = createSlice({
                 state.errorData = action.payload;
             })
 
+            // Genrate Otp
             .addCase(generateOtp.pending, (state) => {
                 state.isLoading = true;
             })
@@ -46,7 +49,7 @@ export const authSlice = createSlice({
                 state.isLoading = false;
             })
 
-
+            // Verify OTP
             .addCase(verifyOtpData.pending, (state) => {
                 state.token = null;
             })
@@ -73,6 +76,22 @@ export const authSlice = createSlice({
             .addCase(salonOwner.rejected, (state, action) => {
                 state.isLoading = false;
                 state.salonDetails = null;
+                state.errorData = action.payload;
+            })
+
+            // salons Service Details
+            .addCase(salonsService.pending, (state) => {
+                state.isLoading = true,
+                    state.salonsServices = null
+            })
+            .addCase(salonsService.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.salonsServices = action.payload;
+                state.errorData = null;
+            })
+            .addCase(salonsService.rejected, (state, action) => {
+                state.isLoading = false;
+                state.salonsServices = null;
                 state.errorData = action.payload;
             })
     }

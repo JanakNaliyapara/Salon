@@ -16,6 +16,7 @@ import Country from "./country.svg";
 import Price from "./price.svg";
 import Description from "./description.svg";
 import Title from "./title.svg";
+import Close from "./close.svg"
 
 
 
@@ -40,5 +41,6 @@ export {
     Country,
     Price,
     Description,
-    Title
+    Title,
+    Close
 }
