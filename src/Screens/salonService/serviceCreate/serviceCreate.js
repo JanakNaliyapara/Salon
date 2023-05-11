@@ -20,7 +20,7 @@ const serviceCreate = ({ navigation }) => {
         title: '',
         short_description: '',
         long_description: '',
-        price: 0.00,
+        price: [],
     });
 
     const [errors, setErrors] = useState(true);
@@ -78,18 +78,19 @@ const serviceCreate = ({ navigation }) => {
     }
 
     const handleOnChange = (text, input) => {
-        console.log("text : ", text, input);
-        if (input === "price") {
-            setValue(prevState => ({ ...prevState, [input]: parseInt(text).toFixed(2) }));
-        }
-        else {
-            setValue(prevState => ({ ...prevState, [input]: text }));
-        }
+        console.log("text : ", input);
+        setValue(prevState => ({ ...prevState, [input]: text }));
     };
     const handleError = (error, input) => {
         setErrors(prevState => ({ ...prevState, [input]: error }));
     };
 
+    const priceNumber = parseFloat(value.price = 0);
+    let data = (
+        priceNumber
+    ).toFixed(2)
+    //   const  valuePrice = parseFloat(value.price);
+    //     parseFloat(valuePrice.toFixed(2)) !== value 
 
     return (
 

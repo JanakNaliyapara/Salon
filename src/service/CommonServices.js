@@ -141,8 +141,13 @@ export const serviceCreate = async (data) => {
     }
 
     try {
-        return await axios.post(`${BASE_URL + apiEndPoints.salonsServices}`, data, { headers: headers })
+         await axios.post(`${BASE_URL + apiEndPoints.salonsServices}`, data, { headers: headers }).then(e=>{
+            if (e.status == 201) {
+                showSucess(e.data.message)
+            }
+         }).catch(err => console.log("err message", err))
     } catch (e) {
+        showError(e.data.message)
         console.log("error on create", e);
         return e;
 

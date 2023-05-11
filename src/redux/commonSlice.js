@@ -120,16 +120,15 @@ export const salonTimedata = createAsyncThunk(
 export const salonsService = createAsyncThunk(
     'auth/salons/services',
     async (servicesDetails, { fulfillWithValue, rejectWithValue }) => {
-        console.log("Salon :: ", servicesDetails);
         const response = await serviceCreate(servicesDetails)
-        if (response?.status === 200) {
+        if (response?.status === 201) {
             // navigate("UploadImage");
             showSucess(response?.data?.message)
             // await AsyncStorage.setItem("token", response?.data?.data?.access_token)
             return fulfillWithValue(response?.data?.data)
         } else {
             showError(response?.response?.data?.message)
-            console.log("Error salons services Details :: ", response);
+            console.log("Error salons services Details :: ", response?.response?.data?.message);
         }
         return rejectWithValue(response?.response?.data?.error);
     }
