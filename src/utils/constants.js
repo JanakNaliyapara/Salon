@@ -28,6 +28,9 @@ export const constants = {
     short_description: 'Short Description',
     long_description: 'Long Description',
     price: 'Price',
-    service_ImageUpload: 'Service Image'
-
+    service_ImageUpload: 'Service Image',
+    Service: 'Services',
+    description: 'Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view. Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view. Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.',
+    S_description: 'Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.',
+    Detail_Service: 'Service Details'
 }

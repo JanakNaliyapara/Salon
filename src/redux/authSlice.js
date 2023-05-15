@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { generateOtp, otp, register, salonOwner, salonsService, verifyOtpData, } from "./commonSlice";
+import { generateOtp, otp, register, salonOwner, salonsService, serviceListView, verifyOtpData, } from "./commonSlice";
 
 
 const initialState = {
@@ -8,7 +8,8 @@ const initialState = {
     errorData: null,
     token: null,
     salonDetails: null,
-    salonsServices: null
+    salonsServices: null,
+    serviceList: null
 }
 
 
@@ -92,6 +93,23 @@ export const authSlice = createSlice({
             .addCase(salonsService.rejected, (state, action) => {
                 state.isLoading = false;
                 state.salonsServices = null;
+                state.errorData = action.payload;
+            })
+
+            // ServiceList
+
+            .addCase(serviceListView.pending, (state) => {
+                state.isLoading = true,
+                    state.salonsServices = null
+            })
+            .addCase(serviceListView.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.serviceList = action.payload;
+                state.errorData = null;
+            })
+            .addCase(serviceListView.rejected, (state, action) => {
+                state.isLoading = false;
+                state.serviceList = null;
                 state.errorData = action.payload;
             })
     }

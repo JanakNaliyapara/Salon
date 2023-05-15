@@ -10,6 +10,8 @@ import uploadImage from "../Screens/uploadImage/uploadImage";
 import OnboardingScreen from "../Screens/welcome/onboardingScreen";
 import serviceCreate from "../Screens/salonService/serviceCreate/serviceCreate";
 import ServiceImageUpload from "../Screens/salonService/serviceImageUpload/serviceImageUpload";
+import listView from "../Screens/salonService/listView/listView";
+import DetaisService from "../Screens/salonService/detailService/detailService";
 
 export const navigationRef = createNavigationContainerRef()
 
@@ -32,7 +34,8 @@ export default function Routes() {
 
             <NavigationContainer ref={navigationRef}>
                 <stack.Navigator screenOptions={{ headerShown: false }}>
-                    <stack.Screen name="ServiceCreate" component={serviceCreate} />
+                    <stack.Screen name="ListView" component={listView} />
+                    <stack.Screen name="DetailSrvice" component={DetaisService} />
                     <stack.Screen name="Splash" component={Splash} />
                     <stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
                     <stack.Screen name="Signin" component={Signin} />
@@ -42,6 +45,8 @@ export default function Routes() {
                     <stack.Screen name="UploadImage" component={uploadImage} />
                     <stack.Screen name="SalonTime" component={salonTime} />
                     <stack.Screen name="ServiceImageUpload" component={ServiceImageUpload} />
+                    <stack.Screen name="ServiceCreate" component={serviceCreate} />
+
 
 
                 </stack.Navigator>

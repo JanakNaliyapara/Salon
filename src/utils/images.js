@@ -13,6 +13,8 @@ const images = {
     frame: require("../assets/Image/Frame.png"),
     createpassword: require("../assets/Image/createpassword.png"),
     imageUpload: require("../assets/Image/imageUpload.png"),
+    plus: require("../assets/Image/plus.png"),
+
 
 }
 

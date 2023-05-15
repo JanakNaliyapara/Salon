@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createSalon, otpVerify, registerUser, salonData, salonsTime, uploadLogoImage, verifyOtp } from "../service/CommonServices";
+import { createSalon, otpVerify, registerUser, salonData, salonsTime, services, uploadLogoImage, verifyOtp } from "../service/CommonServices";
 import { useNavigation } from "@react-navigation/native";
 import { navigate } from "../routes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -131,5 +131,22 @@ export const salonsService = createAsyncThunk(
             console.log("Error salons services Details :: ", response?.response?.data?.message);
         }
         return rejectWithValue(response?.response?.data?.error);
+    }
+)
+
+// ListView
+
+export const serviceListView = createAsyncThunk(
+    'auth/salons/services/owner',
+    async (serviceList, { fulfillWithValue, rejectWithValue }) => {
+        const response = await services(serviceList)
+        if (response?.status === 201) {
+            showSucess(response?.data?.message)
+            return fulfillWithValue(response?.data?.data)
+        } else {
+            showError(response?.response?.data?.data)
+            console.log("Error Service List :: ", response?.response?.data?.message);
+        }
+        return rejectWithValue(response?.response?.data?.error)
     }
 )

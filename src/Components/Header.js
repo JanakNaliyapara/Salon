@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     labels: {
         color: colors.black,
         fontFamily: fonts.medium,
-        fontSize: 20,
+        fontSize: 24,
         paddingLeft: 20
     }
 

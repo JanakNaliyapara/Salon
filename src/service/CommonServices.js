@@ -129,6 +129,8 @@ export const salonsTime = async (data) => {
 }
 
 
+
+
 // post api salons Service Create
 
 export const serviceCreate = async (data) => {
@@ -141,16 +143,40 @@ export const serviceCreate = async (data) => {
     }
 
     try {
-         await axios.post(`${BASE_URL + apiEndPoints.salonsServices}`, data, { headers: headers }).then(e=>{
+        await axios.post(`${BASE_URL + apiEndPoints.salonsServices}`, data, { headers: headers }).then(e => {
             if (e.status == 201) {
                 showSucess(e.data.message)
             }
-         }).catch(err => console.log("err message", err))
+        }).catch(err => console.log("err message", err))
     } catch (e) {
         showError(e.data.message)
         console.log("error on create", e);
         return e;
 
+    }
+
+}
+
+// ListView
+export const services = async () => {
+    let token = await AsyncStorage.getItem('token');
+    console.log("Data : Token :: ", data, token);
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': token
+    }
+
+    try {
+        await axios.get(`${BASE_URL + apiEndPoints.services}`, data, { headers: headers }).then(e => {
+            if (e.status == 201) {
+                showSucess(e.data.message)
+            }
+        }).catch(err => console.log('error message', err))
+    } catch (e) {
+        showError(e.data.message)
+        console.log("error on servicesList", e);
+        return e;
     }
 
 }
