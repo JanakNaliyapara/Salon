@@ -24,6 +24,18 @@ const listView = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [serviceList, setServiceList] = useState([]);
 
+    
+
+
+    const EmptyList = () => {
+        return (
+            <>
+                <View style={styles.emptyView}>
+                    <Text style={styles.emptyText}>{'No Data Found!'}</Text>
+                </View>
+            </>
+        )
+    }
 
     return (
 
@@ -32,14 +44,8 @@ const listView = ({ navigation }) => {
             <SafeAreaView style={{ backgroundColor: colors.white }} />
 
             <View style={styles.container}>
-
-
-
                 <ScrollView>
-
-
                     <View style={styles.mainContainer}>
-
                         <Header
                             onPress={() => navigation.goBack('')}
                             label={constants?.Service}
@@ -48,7 +54,7 @@ const listView = ({ navigation }) => {
                         <View style={styles.divider} />
 
                         <FlatList
-                            data={"listView"}
+                            data={serviceList}
                             renderItem={({ index, item }) => {
                                 return (
                                     <>
@@ -80,9 +86,9 @@ const listView = ({ navigation }) => {
                                     </>
                                 )
                             }}
+                            ListEmptyComponent={EmptyList}
                         />
                     </View>
-
                 </ScrollView>
 
                 <Pressable
@@ -159,6 +165,16 @@ const styles = StyleSheet.create({
         width: 25,
         height: 25,
         tintColor: colors.white
+    },
+    emptyView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    emptyText: {
+        color: colors.black,
+        fontFamily: fonts.medium,
+        fontSize: 15
     }
 })
 
