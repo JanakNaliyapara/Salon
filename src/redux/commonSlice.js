@@ -142,6 +142,7 @@ export const serviceListView = createAsyncThunk(
         const response = await services(serviceList)
         if (response?.status === 201) {
             showSucess(response?.data?.message)
+            console.log("Response on data ::", response?.data?.data);
             return fulfillWithValue(response?.data?.data)
         } else {
             showError(response?.response?.data?.data)

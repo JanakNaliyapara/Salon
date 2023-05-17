@@ -54,7 +54,7 @@ const listView = ({ navigation }) => {
                         <View style={styles.divider} />
 
                         <FlatList
-                            data={serviceList}
+                            data={"serviceList"}
                             renderItem={({ index, item }) => {
                                 return (
                                     <>

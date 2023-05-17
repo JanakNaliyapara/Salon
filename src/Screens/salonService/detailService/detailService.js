@@ -62,8 +62,8 @@ const Detail_Service = ({ navigation }) => {
                             </Text>
 
                             <Text style={[styles.title, { color: colors.yellow_dark }]}>
-                                {'Price: ₹ '}<Text style={[styles.description]}>
-                                    {'543.67'}
+                                {'Price: '}<Text style={[styles.description]}>
+                                ₹ {'543.67'}
                                 </Text>
                             </Text>
                         </View>
